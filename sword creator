@@ -33,41 +33,49 @@ function createSword()
 				local script = {Parent = tool}
 				--Rescripted by Luckymaxer
 
-				Tool = script.Parent
-				Handle = Tool:WaitForChild("Handle")
-				Mesh = Handle:WaitForChild("Mesh")
+				local Tool = script.Parent
+				local Handle = Tool:WaitForChild("Handle")
+				local Mesh = Handle:WaitForChild("Mesh")
 
-				Players = game:GetService("Players")
-				Debris = game:GetService("Debris")
-				RunService = game:GetService("RunService")
+				local Players = game:GetService("Players")
+				local Debris = game:GetService("Debris")
+				local RunService = game:GetService("RunService")
 
-				BaseUrl = "http://www.roblox.com/asset/?id="
+				local BaseUrl = "http://www.roblox.com/asset/?id="
 
-				Grips = {
+				local Grips = {
 					Up = CFrame.new(0, 0, -1.5, 0, 0, 1, 1, 0, 0, 0, 1, 0),
 					Out = CFrame.new(0, 0, -1.5, 0, -1, -0, -1, 0, -0, 0, 0, -1),
 				}
 
-				DamageValues = {
+				local DamageValues = {
 					BaseDamage = 5,
 					SlashDamage = 10,
 					LungeDamage = 30,
 				}
 
-				Damage = DamageValues.BaseDamage
+				local Damage = DamageValues.BaseDamage
 
-				Sounds = {
+				local Sounds = {
 					Slash = Handle:WaitForChild("Slash"),
 					Lunge = Handle:WaitForChild("Lunge"),
 					Unsheath = Handle:WaitForChild("Unsheath"),
 				}
 
-				LastAttack = 0
+				local LastAttack = 0
 
-				ToolEquipped = false
+				local ToolEquipped = false
+				local Character
+				local Player
+				local Humanoid
+				local RootPart
 
 				Tool.Enabled = true
-
+				
+				local function CheckIfAlive()
+					return (((Character and Character.Parent and Humanoid and Humanoid.Parent and Humanoid.Health > 0 and RootPart and RootPart.Parent and Player and Player.Parent) and true) or false)
+				end
+				
 				local function SwordUp()
 					Tool.Grip = Grips.Up
 				end
@@ -167,10 +175,6 @@ function createSword()
 					Damage = DamageValues.BaseDamage
 					LastAttack = Tick
 					Tool.Enabled = true
-				end
-
-				local function CheckIfAlive()
-					return (((Character and Character.Parent and Humanoid and Humanoid.Parent and Humanoid.Health > 0 and RootPart and RootPart.Parent and Player and Player.Parent) and true) or false)
 				end
 
 				local function Equipped()
