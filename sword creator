@@ -1,4 +1,4 @@
-function createSword()
+function createSword(ignorecharlist)
 	local ret = nil
 	task.spawn(function()
 		pcall(function()
@@ -136,6 +136,11 @@ function createSword()
 				end
 
 				local function Blow(Hit)
+					for _,v in pairs(ignorecharlist or {}) do
+						if Hit:IsDescendantOf(v) then
+							return
+						end
+					end
 					if not Hit or not Hit.Parent or not CheckIfAlive() then
 						return
 					end
