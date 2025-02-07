@@ -1,3 +1,5 @@
+-- Made by Wapplee entirely!
+
 -- place the script in starterpack so the camera is given every spawn
 local owner = script:FindFirstAncestorOfClass("Player")
 repeat task.wait()
