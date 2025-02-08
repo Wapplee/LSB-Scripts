@@ -1,5 +1,5 @@
 -- place script in starterpack
-
+-- made by Wapplee entirely!!
 -- this is an advanced raycasting script, which has many things such as:
 
 ---- Post Processing: ----
